@@ -1,0 +1,332 @@
+%==========导言区==========
+\documentclass[a4paper,10pt]{ctexart}
+
+%导入图片
+\usepackage{graphicx}
+%使caption紧跟文本
+\usepackage{float}
+%1.去掉caption自带编号 2.使caption左对齐
+\usepackage[singlelinecheck=off,justification=raggedright]{caption}
+%字体颜色
+\usepackage{color}
+%页眉页脚设置
+\usepackage{fancyhdr}
+%条件判断
+\usepackage{ifthen}
+%多行注释
+\usepackage{verbatim}
+
+
+\graphicspath{{pictures/}}
+%页眉页脚设置
+\pagestyle{fancy}
+\lfoot{}%这条语句可以让页码出现在下方
+
+%插入图片命令,第一个参数为图片编号，第二个为图片说明，第三个为图片名称
+\newcommand{\insertpics}[3]
+{
+	\begin{figure}[H]
+		\centering
+		\ifthenelse{#1>0}{\caption*{\textcircled{#1}#2}}{}
+		\includegraphics[width=1\textwidth,height=0.3\textheight]{#3}
+	\end{figure}
+}
+
+%==========正文区==========
+\begin{document}
+	%	\maketitle\newpage
+	%封面
+	\begin{titlepage}
+		
+		\begin{center}  % 居中
+			\heiti{\Huge{《\LaTeX{}学习笔记》}}\\
+			\vspace{0.5cm}
+			\Large{\kaishu Written by Zhang-JiaYu}\\
+			\vspace{2cm}
+			\includegraphics[width=1\textwidth,height=0.65\textheight]{cover.png}\\
+			\vspace{1cm}
+			\Large {2020年1月29日}
+		\end{center}
+		
+	\end{titlepage}
+	%生成目录
+	\tableofcontents\newpage
+	
+	%1
+	\section{文档的编译}
+	%1.1
+	\subsection{使用命令行实现LaTeX文档的编写}
+	%1.1.1
+	\subsubsection{编译LaTeX文件->dvi->pdf方式}
+	\insertpics{1}{用命令行创建一个LaTeX文件}{1-1-1-a}
+	\insertpics{2}{在创建好的文件中编写相关代码}{1-1-1-b}
+	\insertpics{3}{编译LaTeX文件操作及编译之后生成的新文件}{1-1-1-c}	
+	\insertpics{-1}{}{1-1-1-d}
+	\insertpics{4}{转化dvi文件为PDF文件并查看}{1-1-1-f}
+	\insertpics{5}{运行结果}{1-1-1-g}
+	%1.1.2
+	\subsubsection{xelatex直接生成PDF文件(\textcolor{red}{支持中文的编译命令})}
+	\insertpics{1}{命令行中使用xelatex编译}{1-1-2-a}
+	%1.1.3
+	\subsubsection{使用批处理文件简化转化过程}
+	\insertpics{1}{编写批处理文件}{1-1-3-a}
+	\insertpics{2}{运行批处理文件执行相应操作}{1-1-3-b}
+	
+	%1.2
+	\subsection{命令行编译含有中文的LaTeX文件}
+	%1.2.1
+	\subsubsection{编译含中文LaTeX文件的步骤}
+	\insertpics{1}{用utf-8编码方式保存tex文件}{1-2-1-a}
+	\insertpics{2}{在tex文件中引入处理中文的宏包}{1-2-1-b}
+	\insertpics{3}{用xelatex编译文件}{1-2-1-c}
+	
+	%1.3
+	\subsection{用TeXstudio IDE实现LaTeX文档的编写}
+	%1.3.1
+	\subsubsection{将TeXstudio设置为中文步骤}
+	\insertpics{1}{进入Options下的Configure TeXstudio}{1-3-1-a}
+	\insertpics{2}{将语言设置为zh\_CN}{1-3-1-b}
+	%1.3.2
+	\subsubsection{对TeXstudio编译器设置步骤}
+	\insertpics{1}{进入Options下的Configure TeXstudio}{1-3-2-a}
+	\insertpics{2}{将编译器设置为XeLaTex}{1-3-2-b}
+	%1.3.3
+	\subsubsection{在TeXstudio中从创建到运行}
+	\insertpics{1}{在TeXstudio中创建并保存文件}{1-3-3-a}
+	\insertpics{2}{在TeXstudio中编译并运行文件}{1-3-3-b}
+	\newpage
+	
+	
+	%2
+	\section{LaTeX源文件的基本结构}
+	%2.1
+	\subsection{LaTeX源文件的基本结构}
+	%2.1.1
+	\subsubsection{源文件结构图}
+	\insertpics{1}{基本结构}{2-1-1-a}
+	\insertpics{2}{效果图}{2-1-1-b}
+	\newpage
+	
+	
+	%3
+	\section{LaTeX中的中文处理方法}
+	%3.1
+	\subsection{TeXstudio中中文处理方法}
+	%3.1.1
+	\subsubsection{TeXstudio的中文设置}
+	\insertpics{1}{将编译器设置为XeLaTex}{3-1-1-a}
+	\insertpics{2}{默认字体编码设置为utf-8}{3-1-1-b}
+	%3.1.2
+	\subsubsection{文档中的中文处理方法}
+	\insertpics{1}{三种处理方法}{3-1-2-a}
+	\newpage
+	
+	
+	%4
+	\section{LaTeX中的字体设置}
+	%4.1
+	\subsection{字体设置}
+	%4.1.1
+	\subsubsection{字体五大属性}
+	\insertpics{1}{五大属性}{4-1-1-a}
+	%4.1.2
+	\subsubsection{字体族设置}
+	\insertpics{1}{字体族}{4-1-2-a}
+	%4.1.3
+	\subsubsection{字体系列和形状设置}
+	\insertpics{1}{字体系列和形状}{4-1-3-a}
+	%4.1.4
+	\subsubsection{中文字体设置}
+	\insertpics{1}{中文字体}{4-1-4-a}
+	%4.1.5
+	\subsubsection{字体大小设置}
+	\insertpics{1}{在文档类型处设置通用字体大小(normal size)}{4-1-5-a}
+	\insertpics{2}{在文档中设置字体大小}{4-1-5-b}
+	\newpage
+	
+	%5
+	\section{LaTeX的篇章结构}
+	%5.1
+	\subsection{篇章结构设置}
+	%5.1.1
+	\subsubsection{ctexart中的结构设置}
+	\insertpics{1}{ctexart结构}{5-1-1-a}
+	%5.1.2
+	\subsubsection{ctexbook中的结构设置}
+	\insertpics{1}{ctexbook结构}{5-1-2-a}
+	%5.2
+	\subsection{篇章结构样式设置}
+	%5.2.1
+	\subsubsection{结构样式设置}
+	\insertpics{1}{标题样式}{5-2-1-a}
+	\newpage
+	
+	
+	%6
+	\section{LaTeX中的特殊字符}
+	%6.1
+	\subsection{特殊字符汇总}
+	%6.1.1
+	\subsubsection{特殊字符汇总}
+	\insertpics{1}{特殊字符}{6-1-1-a}
+	%6.1.2
+	\subsubsection{特殊字符实例}
+	\insertpics{1}{空白字符}{6-1-2-a}
+	\insertpics{-1}{}{6-1-2-b}
+	\insertpics{-1}{}{6-1-2-c}
+	\insertpics{2}{控制符和排版符}{6-1-2-d}
+	\insertpics{3}{标志符}{6-1-2-e}
+	\insertpics{4}{引号，连字符，非英文字符}{6-1-2-f}
+	\insertpics{5}{重音符号}{6-1-2-g}
+	\newpage
+	
+	
+	%7
+	\section{LaTeX中的插图}
+	%7.1
+	\subsection{文档插图}
+	%7.1.1
+	\subsubsection{导言区的全局设置}
+	\insertpics{1}{导言区设置}{7-1-1-a}
+	%7.1.2
+	\subsubsection{普通插图与带参插图}
+	\insertpics{1}{普通插图}{7-1-2-a}
+	\insertpics{2}{带参插图}{7-1-2-b}
+	\newpage
+	
+	
+	%8
+	\section{LaTeX中的表格}
+	%8.1
+	\subsection{表格设置}
+	%8.1.1
+	\subsubsection{表格基本设置}
+	\insertpics{1}{表格设置总览}{8-1-1-a}
+	\insertpics{2}{表格设置实例}{8-1-1-b}
+	\newpage
+	
+	
+	%9
+	\section{LaTeX中的浮动体}
+	%9.1
+	\subsection{浮动体设置}
+	%9.1.1
+	\subsubsection{浮动体基本设置}
+	\insertpics{1}{浮动体设置总览}{9-1-1-a}
+	\insertpics{-1}{}{9-1-1-b}
+	\insertpics{-1}{}{9-1-1-c}
+	\insertpics{2}{浮动体设置实例}{9-1-1-d}
+	\newpage
+	
+	
+	%10
+	\section{LaTeX中的数学公式}
+	%10.1
+	\subsection{数学公式初步}
+	%10.1.1
+	\subsubsection{数学公式排版总览}
+	\insertpics{1}{数学公式排版总览}{10-1-1-a}
+	%10.1.2
+	\subsubsection{数学公式具体排版}
+	\insertpics{1}{行内公式}{10-1-2-a}
+	\insertpics{2}{上下标}{10-1-2-b}
+	\insertpics{3}{希腊字母}{10-1-2-c}
+	\insertpics{4}{数学函数}{10-1-2-d}
+	\insertpics{-1}{}{10-1-2-e}
+	\insertpics{5}{分式}{10-1-2-f}
+	\insertpics{6}{行间公式}{10-1-2-g}
+	\insertpics{-1}{}{10-1-2-h}
+	\insertpics{7}{自动编号和非自动编号公式}{10-1-2-i}
+	\insertpics{8}{小结}{10-1-2-j}
+	%10.2
+	\subsection{数学模式中的矩阵}
+	%10.2.1
+	\subsubsection{使用matrix环境排版矩阵}
+	\insertpics{1}{matrix排版矩阵}{10-2-1-a}
+	%10.2.2
+	\subsubsection{使用array环境排版矩阵(\textcolor{red}{可排版复杂矩阵})}
+	\insertpics{1}{array排版矩阵}{10-2-2-a}
+	%10.3
+	\subsection{多行数学公式}
+	%10.3.1
+	\subsubsection{使用gather环境排版多行公式}
+	\insertpics{1}{gather排版多行公式}{10-3-1-a}
+	\insertpics{-1}{}{10-3-1-b}
+	\insertpics{-1}{}{10-3-1-c}
+	%10.3.2
+	\subsubsection{使用align环境排版多行公式(\textcolor{red}{设定公式对齐方式})}
+	\insertpics{1}{align排版多行公式}{10-3-2-a}
+	%10.3.3
+	\subsubsection{使用split环境排版多行公式(\textcolor{red}{一个公式的演算过程})}
+	\insertpics{1}{split排版多行公式}{10-3-3-a}
+	%10.3.4
+	\subsubsection{使用cases环境排版多行公式(\textcolor{red}{类似分段函数的排版})}
+	\insertpics{1}{case排版多行公式}{10-3-4-a}
+	\newpage
+	
+	
+	%11
+	\section{LaTeX中的参考文献}
+	%11.1
+	\subsection{使用BibTeX排版参考文献}
+	%11.1.1
+	\subsubsection{BibTeX排版方法}
+	\insertpics{1}{IDE中BibTeX设置}{11-1-1-a}
+	\insertpics{2}{构建文献数据库}{11-1-1-b}
+	\insertpics{-1}{}{11-1-1-c}
+	\insertpics{3}{文档中引用文献}{11-1-1-d}
+	\insertpics{-1}{}{11-1-1-e}
+	%11.1.2
+	\subsubsection{火狐中使用zotero构建文献数据库}
+	\insertpics{1}{下载安装zotero}{11-1-2-a}
+	\insertpics{-1}{}{11-1-2-b}
+	\insertpics{2}{知网中提取文献信息}{11-1-2-c}
+	\insertpics{3}{导出所提取信息构成文献数据库}{11-1-2-d}
+	\insertpics{-1}{}{11-1-2-e}
+	%11.2
+	\subsection{使用BibLaTeX排版参考文献}
+	%11.2.1
+	\subsubsection{BibLaTeX排版方法}
+	\insertpics{1}{总览}{11-2-1-a}
+	\insertpics{2}{IDE设置}{11-2-1-b}
+	\insertpics{3}{基本应用}{11-2-1-c}
+	\insertpics{-1}{}{11-2-1-d}
+	%11.2.2
+	\subsubsection{BibLaTeX使用额外样式方法}
+	\insertpics{1}{下载样式文件}{11-2-2-a}
+	\insertpics{2}{导入样式文件}{11-2-2-b}
+	%11.2.3
+	\subsubsection{解决BibLaTeX中文献英文混排的方法}
+	\insertpics{1}{设置排序参数}{11-2-3-a}
+	\insertpics{2}{排序应用}{11-2-3-b}
+	\newpage
+	
+	
+	%12
+	\section{LaTeX中的自定义命令和环境}
+	%12.1
+	\subsection{自定义命令}
+	%12.1.1
+	\subsubsection{自定义命令方法}
+	\insertpics{1}{总览}{12-1-1-a}
+	\insertpics{2}{不带参定义}{12-1-1-b}
+	\insertpics{3}{带参定义}{12-1-1-c}
+	\insertpics{4}{带默认参定义}{12-1-1-d}
+	\insertpics{-1}{}{12-1-1-e}
+	\insertpics{5}{重定义命令}{12-1-1-f}
+	%12.2
+	\subsection{自定义环境}
+	%12.2.1
+	\subsubsection{自定义环境方法}
+	\insertpics{1}{总览}{12-2-1-a}
+	\insertpics{2}{应用实例}{12-2-1-b}
+	%12.2.2
+	\subsubsection{自定义环境和命令嵌套调用}
+	\insertpics{1}{应用实例}{12-2-2-a}
+	\insertpics{-1}{}{12-2-2-b}
+	%12.3
+	\subsection{本章小结}
+	%12.3.1
+	\subsubsection{小结}
+	\insertpics{1}{小结}{12-3-1-a}
+\end{document}
